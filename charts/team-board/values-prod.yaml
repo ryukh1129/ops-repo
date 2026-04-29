@@ -1,6 +1,7 @@
 # prod는 정확한 버전과 충분한 리소스
 image:
-  tag: "1.24.0"           # prod는 정확한 버전 명시
+  repository: nginx
+  tag: "1.25"           # prod는 정확한 버전 명시
 
 replicaCount: 3
 
