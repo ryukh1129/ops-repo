@@ -1,4 +1,4 @@
-name: CI
+﻿---`nname: CI
 on:
   push:
   pull_request:
