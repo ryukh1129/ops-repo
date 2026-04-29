@@ -1,0 +1,6 @@
+apiVersion: v2
+name: team-board
+description: team-board 애플리케이션 Helm chart
+type: application
+version: 0.1.0        # Chart 자체 버전 (Chart 구조가 바뀔 때 올림)
+appVersion: "1.2.0"   # 앱 버전 (이미지 태그와 관련)

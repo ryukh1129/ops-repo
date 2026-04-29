@@ -1,0 +1,13 @@
+# dev는 기본값에서 이것만 오버라이드
+image:
+  tag: "latest"          # dev는 항상 최신 이미지
+
+replicaCount: 1          # dev는 1개만
+
+ingress:
+  host: dev.app.local
+
+resources:
+  requests:
+    cpu: 100m
+    memory: 128Mi

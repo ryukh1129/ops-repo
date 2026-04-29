@@ -1,0 +1,31 @@
+image:
+  repository: nginx
+  tag: "1.25"
+  pullPolicy: IfNotPresent
+
+replicaCount: 2
+
+service:
+  port: 80
+
+ingress:
+  enabled: true
+  host: app.local
+
+resources:
+  requests:
+    cpu: 100m
+    memory: 128Mi
+  limits:
+    cpu: 500m
+    memory: 512Mi
+
+autoscaling:
+  enabled: false
+  minReplicas: 2
+  maxReplicas: 10
+  targetCPUUtilizationPercentage: 60
+
+serviceAccount:
+  create: false
+  name: ""

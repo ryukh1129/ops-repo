@@ -1,0 +1,26 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: team-board              # Application 이름
+  namespace: argocd             # ArgoCD는 항상 argocd namespace에 만듦
+spec:
+  project: default
+
+  source:
+    repoURL: https://github.com/ryukh1129/ops-repo.git   # ← 본인 Git 저장소로 변경
+    targetRevision: main                             # 감시할 브랜치
+    path: charts/team-board                         # Chart가 있는 폴더 경로
+    helm:
+      valueFiles:
+      - values-prod.yaml                            # 사용할 values 파일
+
+  destination:
+    server: https://kubernetes.default.svc          # 현재 클러스터
+    namespace: team-board                           # 배포할 namespace
+
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace=true    # namespace 없으면 자동 생성
+    automated:
+      selfHeal: true          # Drift 감지 시 자동 복구
+      prune: true             # Git에서 삭제된 리소스는 클러스터에서도 삭제
